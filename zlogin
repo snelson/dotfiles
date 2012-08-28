@@ -1,5 +1,5 @@
 export PATH="/usr/local/php5/bin:/usr/local/apache2/sbin:/usr/local/apache2/bin:/usr/local/sbin:/usr/local/bin:/usr/local/mysql/bin:/usr/local/subversion/bin:/Developer/SDKs/flex_sdk_3/bin:~/Scripts:/usr/local/share/npm/bin:$PATH"
-export CC=/usr/bin/gcc-4.2
+export CC=/usr/local/bin/gcc-4.2
 
 # adds the current branch name in green
 git_prompt_info() {
