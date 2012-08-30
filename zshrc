@@ -61,7 +61,7 @@ setopt AUTOPUSHD PUSHDMINUS PUSHDSILENT PUSHDTOHOME
 setopt cdablevars
 
 # Try to correct command line spelling
-setopt CORRECT CORRECT_ALL
+setopt nocorrectall
 
 # Enable extended globbing
 setopt EXTENDED_GLOB
