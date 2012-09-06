@@ -80,3 +80,5 @@ chpwd_functions=( "${chpwd_functions[@]}" _save_last_cwd )
 
 
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
