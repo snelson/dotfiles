@@ -9,3 +9,4 @@ autocmd BufWritePre * :%s/\s\+$//e
 let g:syntastic_disabled_filetypes = ['sass']
 let g:ctrlp_dotfiles = 0
 
+set relativenumber
