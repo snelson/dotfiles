@@ -18,6 +18,7 @@ alias flushdns='sudo killall -HUP mDNSResponder'
 
 function git(){hub "$@"}
 alias g="git"
+alias gap="git add --patch"
 alias gci="git pull --rebase && rake && git push"
 alias gst='git status'
 alias gl='git pull'
