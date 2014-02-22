@@ -1,8 +1,10 @@
 command! StripWhitespace %s/\s\+$//
 set gfn=Menlo:h13
 
-color solarized
+set t_Co=16
 set background=dark
+color solarized
+
 set autoread
 autocmd BufWritePre * :%s/\s\+$//e
 
