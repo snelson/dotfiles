@@ -26,6 +26,9 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+" don't wrap lines
+set nowrap
+
 " display relative line numbers
 set relativenumber
 
