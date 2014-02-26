@@ -90,3 +90,10 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+
+" Automatically reload vimrc when it changes
+" http://www.bestofvim.com/tip/auto-reload-your-vimrc/
+augroup reload_vimrc
+    autocmd!
+    autocmd BufWritePost .vimrc,vimrc source $MYVIMRC
+augroup END
