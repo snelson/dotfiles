@@ -68,6 +68,7 @@ endif
 
 " NERDTree configuration
 let NERDTreeShowLineNumbers=1
+let NERDTreeWinSize = 50
 
 " mappings
 map <Leader>n :NERDTreeToggle<CR>
