@@ -29,6 +29,18 @@ set expandtab
 " don't wrap lines
 set nowrap
 
+" Smart tab completion that will that will either insert
+" a tab character or autocomplete
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+
 " display relative line numbers
 set relativenumber
 
