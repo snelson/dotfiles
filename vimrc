@@ -7,10 +7,10 @@ endif
 let mapleader = ","
 
 " Make backspace key delete when in insert mode
-set backspace=2   
+set backspace=2
 
 " Use Vim settings, rather then Vi settings
-set nocompatible  
+set nocompatible
 
 " No tmp files
 set nobackup
