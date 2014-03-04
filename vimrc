@@ -21,6 +21,9 @@ set noswapfile
 syntax on
 colorscheme solarized
 
+" Highlight last search term
+set hlsearch
+
 " softtabs 2 spaces
 set tabstop=2
 set shiftwidth=2
