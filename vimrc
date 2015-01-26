@@ -20,6 +20,7 @@ set noswapfile
 " enable syntax highlighting
 syntax on
 colorscheme solarized
+set background=dark
 
 " Highlight last search term
 set hlsearch
