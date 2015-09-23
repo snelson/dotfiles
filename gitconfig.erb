@@ -30,6 +30,7 @@
   rmb = !sh -c 'git branch -D $1 && git push origin :$1' -
   cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
   done = !git fetch && git rebase origin/master && git checkout master && git merge @{-1} && ./bin/rake && git push
+  ship = !git up && git checkout master && git merge @{-1} && git push
   mm = merge --no-ff --no-commit
   # Gets the name of the current branch you're on
   branch-name = !git for-each-ref --format='%(refname:short)' `git symbolic-ref HEAD`
