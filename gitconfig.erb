@@ -35,7 +35,7 @@
   # Gets the name of the current branch you're on
   branch-name = !git for-each-ref --format='%(refname:short)' `git symbolic-ref HEAD`
   # Shortcut to explicitly set current branch upstream
-  set-up = !sh -c 'git branch --set-upstream-to `git branch-name` origin/$1' -
+  set-up = !sh -c 'git branch -u origin/$1' -
   # Set the remote branch to track
   hookup = !git set-up `git branch-name`
   # Push the branch then track track it
