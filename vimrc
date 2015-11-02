@@ -57,6 +57,7 @@ inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 
 " display relative line numbers
 set relativenumber
+set number
 
 " NERDTree configuration
 let NERDTreeShowLineNumbers=1
