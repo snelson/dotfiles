@@ -39,8 +39,7 @@
   hookup = !git set-up `git branch-name`
   # Push the branch then track track it
   publish = !git push && git hookup
-  # create a pullrequest at github
-  pullreq = !sh -c 'curl -d "pull[base]=master" -d "pull[head]=thisbythem:`git branch-name`" -d "pull[issue]=$2" -u "`git config github.user`" https://github.com/api/v2/json/pulls/$1' -
+  resettoorigin = !git reset --hard origin/`git branch-name`
 [color]
   diff = auto
   status = auto
