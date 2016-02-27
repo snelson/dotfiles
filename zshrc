@@ -85,6 +85,11 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 # recommended by brew doctor
 export PATH="/usr/local/bin:$PATH"
 
+# override git author to be used for pairing
+# put something like this in this file
+# export GIT_AUTHOR_NAME="Scotty and Andy" GIT_AUTHOR_EMAIL="scotty+andy@kajabi.com"
+if [[ -s "$HOME/.git_authors" ]] ; then source "$HOME/.git_authors" ; fi
+
 # Setup for chruby
 
 source /usr/local/share/chruby/chruby.sh
