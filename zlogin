@@ -1,4 +1,4 @@
-export PATH="/usr/local/php5/bin:/usr/local/apache2/sbin:/usr/local/apache2/bin:/usr/local/sbin:/usr/local/bin:/usr/local/mysql/bin:/usr/local/subversion/bin:/Developer/SDKs/flex_sdk_3/bin:~/Scripts:/usr/local/share/npm/bin:$PATH"
+#export PATH="/usr/local/php5/bin:/usr/local/apache2/sbin:/usr/local/apache2/bin:/usr/local/sbin:/usr/local/bin:/usr/local/mysql/bin:/usr/local/subversion/bin:/Developer/SDKs/flex_sdk_3/bin:~/Scripts:/usr/local/share/npm/bin:$PATH"
 
 # adds the current branch name in green
 git_prompt_info() {
@@ -22,10 +22,5 @@ setopt prompt_subst
 export PS1='$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%~%{$reset_color%}] '
 
 # rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
-export PATH="./bin:$PATH"
-
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"

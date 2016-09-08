@@ -78,14 +78,12 @@ chpwd_functions=( "${chpwd_functions[@]}" _save_last_cwd )
 # tmuxinator
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
-
-
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 # recommended by brew doctor
 export PATH="/usr/local/bin:$PATH"
 
-# override git author to be used for pairing
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
 # put something like this in this file
 # export GIT_AUTHOR_NAME="Scotty and Andy" GIT_AUTHOR_EMAIL="scotty+andy@kajabi.com"
 if [[ -s "$HOME/.git_authors" ]] ; then source "$HOME/.git_authors" ; fi
@@ -97,3 +95,4 @@ source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
 
 chruby ruby-2.2.0
+
