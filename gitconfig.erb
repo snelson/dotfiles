@@ -19,6 +19,8 @@
   qpl = log --pretty=\"%Cblue%h%Creset %Cgreen[%cr]%Creset %s\" origin/production..origin/master
   graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   filelog = log --oneline --no-merges --
+  mergelog = graph --merges
+  mymergelog = graph --merges --author Scotty
   datetag = !git tag `date "+%Y_%m_%d_%H%M"`
   pr = remote prune origin
   up = !git fetch origin && git rebase origin/master
