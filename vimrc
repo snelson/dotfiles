@@ -126,6 +126,9 @@ augroup END
 " Tell vim-rspec to run in tmux session
 let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec}\n")'
 
+" Default CtrlP to use regexp mode
+let g:ctrlp_regexp = 1
+
 " vim-rspec mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
