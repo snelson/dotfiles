@@ -124,7 +124,7 @@ augroup vimrcEx
 augroup END
 
 " Tell vim-rspec to run in tmux session
-let g:rspec_command = 'call Send_to_Tmux("bundle exec rspec {spec}\n")'
+let g:rspec_command = 'call Send_to_Tmux("bundle exec spring rspec {spec}\n")'
 
 " Default CtrlP to use regexp mode
 let g:ctrlp_regexp = 1
