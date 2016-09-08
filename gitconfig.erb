@@ -44,6 +44,7 @@
   resettoorigin = !git reset --hard origin/`git branch-name`
   shove = push --force-with-lease
   upshove = !git up && git shove
+  ship = !git upshove && git co master && git pull && git mm @{-1} && git push && git rmb `git last-branch-name`
   review = !sh -c 'git checkout $1 && git pull' -
   reviewdone = !sh -c 'git checkout master && git branch -D @{-1} && git pull' -
 [color]
