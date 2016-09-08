@@ -42,6 +42,8 @@
   # Push the branch then track track it
   publish = !git push && git hookup
   resettoorigin = !git reset --hard origin/`git branch-name`
+  shove = push --force-with-lease
+  upshove = !git up && git shove
 [color]
   diff = auto
   status = auto
