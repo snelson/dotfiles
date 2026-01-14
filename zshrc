@@ -77,11 +77,10 @@ chpwd_functions=( "${chpwd_functions[@]}" _save_last_cwd )
 # tmuxinator
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
-# recommended by brew doctor
+# PATH
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.opencode/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
 # git authors for pairing
 [[ -s "$HOME/.git_authors" ]] && source "$HOME/.git_authors"
