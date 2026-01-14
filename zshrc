@@ -89,5 +89,8 @@ elif [[ -f /usr/local/share/chruby/chruby.sh ]]; then
 fi
 # Note: Ruby version is auto-selected via .ruby-version in project directories
 
+# Zoxide (smarter cd)
+eval "$(zoxide init zsh)"
+
 # Starship prompt (must be at end)
 eval "$(starship init zsh)"

@@ -22,6 +22,9 @@ brew "postgresql@16"
 # Prompt
 brew "starship"              # Cross-shell prompt
 
+# Navigation
+brew "zoxide"                # Smarter cd command
+
 # Utilities
 brew "jq"                    # JSON processor
 brew "tree"                  # Directory tree
