@@ -1,6 +1,3 @@
-# Taps
-tap "homebrew/bundle"
-
 # Core CLI tools
 brew "git"
 brew "gh"                    # GitHub CLI (replaces hub)
@@ -32,5 +29,4 @@ brew "htop"                  # Process viewer
 brew "reattach-to-user-namespace"  # tmux clipboard fix
 
 # Fonts (for terminal and neovim icons)
-tap "homebrew/cask-fonts"
 cask "font-jetbrains-mono-nerd-font"
