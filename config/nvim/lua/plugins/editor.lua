@@ -5,44 +5,44 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "bash",
-          "css",
-          "dockerfile",
-          "gitcommit",
-          "go",
-          "html",
-          "javascript",
-          "json",
-          "lua",
-          "markdown",
-          "markdown_inline",
-          "python",
-          "ruby",
-          "scss",
-          "sql",
-          "tsx",
-          "typescript",
-          "vim",
-          "vimdoc",
-          "yaml",
+    main = "nvim-treesitter.configs",
+    opts = {
+      ensure_installed = {
+        "bash",
+        "css",
+        "dockerfile",
+        "gitcommit",
+        "go",
+        "html",
+        "javascript",
+        "json",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "ruby",
+        "scss",
+        "sql",
+        "tsx",
+        "typescript",
+        "vim",
+        "vimdoc",
+        "yaml",
+      },
+      auto_install = true,
+      highlight = { enable = true },
+      indent = { enable = true },
+      endwise = { enable = true },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "<C-space>",
+          node_incremental = "<C-space>",
+          scope_incremental = false,
+          node_decremental = "<bs>",
         },
-        auto_install = true,
-        highlight = { enable = true },
-        indent = { enable = true },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "<C-space>",
-            node_incremental = "<C-space>",
-            scope_incremental = false,
-            node_decremental = "<bs>",
-          },
-        },
-      })
-    end,
+      },
+    },
   },
 
   -- Autopairs
@@ -73,11 +73,7 @@ return {
   {
     "RRethy/nvim-treesitter-endwise",
     event = "InsertEnter",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        endwise = { enable = true },
-      })
-    end,
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
 
   -- Indent guides
