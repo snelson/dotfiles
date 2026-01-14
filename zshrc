@@ -34,12 +34,6 @@ bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
 bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 
-# expand functions in the prompt
-setopt prompt_subst
-
-# prompt
-export PS1='[${SSH_CONNECTION+"%n@%m:"}%~] '
-
 # History settings
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -94,3 +88,6 @@ elif [[ -f /usr/local/share/chruby/chruby.sh ]]; then
   source /usr/local/share/chruby/auto.sh
 fi
 # Note: Ruby version is auto-selected via .ruby-version in project directories
+
+# Starship prompt (must be at end)
+eval "$(starship init zsh)"

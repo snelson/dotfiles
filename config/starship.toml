@@ -1,0 +1,56 @@
+# Starship prompt configuration
+# Docs: https://starship.rs/config/
+
+# Prompt format
+format = """
+$directory\
+$git_branch\
+$git_status\
+$ruby\
+$nodejs\
+$python\
+$cmd_duration\
+$line_break\
+$character"""
+
+# Shorter directory path
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+
+# Git branch
+[git_branch]
+format = "on [$symbol$branch]($style) "
+symbol = " "
+
+# Git status
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+style = "bold red"
+
+# Ruby version (only show in Ruby projects)
+[ruby]
+format = "via [$symbol($version)]($style) "
+symbol = " "
+detect_files = ["Gemfile", ".ruby-version"]
+
+# Node.js (only show in Node projects)
+[nodejs]
+format = "via [$symbol($version)]($style) "
+symbol = " "
+detect_files = ["package.json", ".node-version"]
+
+# Python (only show in Python projects)
+[python]
+format = "via [$symbol($version)]($style) "
+symbol = " "
+
+# Command duration (show if > 2 seconds)
+[cmd_duration]
+min_time = 2_000
+format = "took [$duration]($style) "
+
+# Prompt character
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"

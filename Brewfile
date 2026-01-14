@@ -19,6 +19,9 @@ brew "ruby-install"          # Install rubies for chruby
 brew "node"
 brew "postgresql@16"
 
+# Prompt
+brew "starship"              # Cross-shell prompt
+
 # Utilities
 brew "jq"                    # JSON processor
 brew "tree"                  # Directory tree

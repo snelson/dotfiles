@@ -76,16 +76,14 @@ def setup_config_dir
   config_source = File.join(Dir.pwd, 'config')
   return unless File.directory?(config_source)
 
-  # Handle each subdirectory in config/
+  config_home = ENV['XDG_CONFIG_HOME'] || File.join(ENV['HOME'], '.config')
+  FileUtils.mkdir_p(config_home)
+
+  # Handle each entry in config/ (both files and directories)
   Dir.entries(config_source).each do |entry|
     next if entry.start_with?('.')
 
     source = File.join(config_source, entry)
-    next unless File.directory?(source)
-
-    config_home = ENV['XDG_CONFIG_HOME'] || File.join(ENV['HOME'], '.config')
-    FileUtils.mkdir_p(config_home)
-
     target = File.join(config_home, entry)
 
     if File.exist?(target) || File.symlink?(target)
