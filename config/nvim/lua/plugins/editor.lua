@@ -4,45 +4,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    event = { "BufReadPre", "BufNewFile" },
-    main = "nvim-treesitter.configs",
-    opts = {
-      ensure_installed = {
-        "bash",
-        "css",
-        "dockerfile",
-        "gitcommit",
-        "go",
-        "html",
-        "javascript",
-        "json",
-        "lua",
-        "markdown",
-        "markdown_inline",
-        "python",
-        "ruby",
-        "scss",
-        "sql",
-        "tsx",
-        "typescript",
-        "vim",
-        "vimdoc",
-        "yaml",
-      },
-      auto_install = true,
-      highlight = { enable = true },
-      indent = { enable = true },
-      endwise = { enable = true },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<C-space>",
-          node_incremental = "<C-space>",
-          scope_incremental = false,
-          node_decremental = "<bs>",
-        },
-      },
-    },
+    lazy = false,
   },
 
   -- Autopairs
@@ -71,9 +33,8 @@ return {
 
   -- Endwise (auto-add end in Ruby, etc.)
   {
-    "RRethy/nvim-treesitter-endwise",
+    "tpope/vim-endwise",
     event = "InsertEnter",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
   },
 
   -- Indent guides
