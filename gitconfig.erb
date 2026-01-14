@@ -1,6 +1,8 @@
 [user]
   name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
   email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
+[init]
+  defaultBranch = main
 [alias]
   st = status
   a = add
@@ -57,18 +59,23 @@
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
   excludesfile = <%= ENV['HOME'] %>/.gitignore
   quotepath = false
-[github]
-  user = <%= print("GitHub Username: "); STDOUT.flush; STDIN.gets.chomp %>
-  token = <%= print("GitHub API Token: "); STDOUT.flush; STDIN.gets.chomp %>
+[credential]
+  helper = osxkeychain
 [branch]
   autosetuprebase = always
 [merge]
-  tool = opendiff
+  conflictstyle = diff3
+[diff]
+  algorithm = histogram
+  colorMoved = default
 [help]
-  format = web
+  autocorrect = prompt
 [push]
   default = current
-[web]
-  browser = chrome-mac
-[browser "chrome-mac"]
-  cmd = open -a Google\\ Chrome.app
+  autoSetupRemote = true
+[pull]
+  rebase = true
+[fetch]
+  prune = true
+[rebase]
+  autoStash = true
