@@ -9,8 +9,9 @@ compinit
 setopt auto_cd
 cdpath=($HOME/Code /Volumes/Master/Code)
 
-# use vim as an editor
-export EDITOR=vim
+# use neovim as an editor
+export EDITOR=nvim
+export VISUAL=nvim
 export TERM=xterm-256color
 
 # aliases
@@ -42,14 +43,15 @@ setopt prompt_subst
 # prompt
 export PS1='[${SSH_CONNECTION+"%n@%m:"}%~] '
 
-# ignore duplicate history entries
-setopt histignoredups
-
-# keep TONS of history
-export HISTSIZE=4096
-
-# look for ey config in project dirs
-export EYRC=./.eyrc
+# History settings
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_IGNORE_DUPS      # ignore duplicate entries
+setopt HIST_IGNORE_SPACE     # ignore commands starting with space
+setopt SHARE_HISTORY         # share history between sessions
+setopt APPEND_HISTORY        # append to history file
+setopt INC_APPEND_HISTORY    # add commands immediately
 
 # automatically pushd
 setopt auto_pushd
@@ -68,10 +70,10 @@ setopt EXTENDED_GLOB
 
 # restore previous cwd
 if [[ -f ~/.last_cwd ]]; then
-  cd `cat ~/.last_cwd`
+  cd "$(cat ~/.last_cwd)" 2>/dev/null || true
 fi
 _save_last_cwd() {
-  echo `pwd` > ~/.last_cwd
+  printf '%s' "$PWD" > ~/.last_cwd
 }
 chpwd_functions=( "${chpwd_functions[@]}" _save_last_cwd )
 
@@ -84,15 +86,15 @@ export PATH="/usr/local/bin:$PATH"
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-# put something like this in this file
-# export GIT_AUTHOR_NAME="Scotty and Andy" GIT_AUTHOR_EMAIL="scotty+andy@kajabi.com"
-if [[ -s "$HOME/.git_authors" ]] ; then source "$HOME/.git_authors" ; fi
+# git authors for pairing
+[[ -s "$HOME/.git_authors" ]] && source "$HOME/.git_authors"
 
-# Setup for chruby
-
-source /usr/local/share/chruby/chruby.sh
-
-source /usr/local/share/chruby/auto.sh
-
-chruby ruby-2.2.0
-
+# Setup for chruby (if installed via homebrew)
+if [[ -f /opt/homebrew/share/chruby/chruby.sh ]]; then
+  source /opt/homebrew/share/chruby/chruby.sh
+  source /opt/homebrew/share/chruby/auto.sh
+elif [[ -f /usr/local/share/chruby/chruby.sh ]]; then
+  source /usr/local/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
+fi
+# Note: Ruby version is auto-selected via .ruby-version in project directories

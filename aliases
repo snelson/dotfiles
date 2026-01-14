@@ -15,9 +15,12 @@ alias -g ONE="| awk '{ print \$1}'"
 alias flushdns='sudo killall -HUP mDNSResponder'
 
 # GIT
-
-function git(){hub "$@"}
-alias g="git"
+# Use gh CLI if available, otherwise fall back to git
+if command -v gh &> /dev/null; then
+  alias g="gh"
+else
+  alias g="git"
+fi
 alias gap="git add --patch"
 alias gsp="git stash; git pull; git push; git stash pop;"
 alias gan="git add $(git ls-files -o --exclude-standard); git status;"
@@ -39,18 +42,15 @@ alias s="bundle exec rspec"
 alias gi="gem install"
 alias giv="gem install -v"
 alias b="bundle"
-alias bi="b install --path .bundle --binstubs"
+alias bi="b install"
 alias bil="bi --local"
 alias bu="b update"
 alias be="b exec"
-alias binit="bi && b package && echo 'vendor/bundle' >> .gitignore"
-alias atf="autotest -cf"
-alias atp="autotest -cfp"
 alias rsp="be rake parallel:spec"
 
 # Rails
 
-alias rst='rails server thin'
+alias rs='rails server'
 alias migrate="bundle exec rake db:migrate db:test:prepare"
 alias migratep="bundle exec rake db:migrate parallel:prepare"
 alias remigrate="rake db:migrate && rake db:migrate:redo && rake db:schema:dump db:test:prepare"
@@ -64,12 +64,12 @@ alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 # Editing
 
-alias ealiases='vim -f "$HOME/.aliases"; source "$HOME/.aliases";'
-alias elogin='vim -f "$HOME/.zlogin"; source "$HOME/.zlogin";'
-alias ezsh='vim -f "$HOME/.zshrc"; source "$HOME/.zshrc";'
-alias egit='vim "$HOME/.gitconfig"'
-alias ehosts='sudo vim /etc/hosts'
-alias evhosts='sudo vim -f /etc/apache2/extra/httpd-vhosts.conf; sudo apachectl restart;'
+alias ealiases='nvim "$HOME/.aliases"; source "$HOME/.aliases";'
+alias elogin='nvim "$HOME/.zlogin"; source "$HOME/.zlogin";'
+alias ezsh='nvim "$HOME/.zshrc"; source "$HOME/.zshrc";'
+alias egit='nvim "$HOME/.gitconfig"'
+alias ehosts='sudo nvim /etc/hosts'
+alias envim='nvim "$HOME/.config/nvim/init.lua"'
 
 # TMUX
 
