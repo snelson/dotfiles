@@ -15,7 +15,6 @@ return {
     opts = {
       ensure_installed = {
         "lua_ls",
-        "ruby_lsp",
         "ts_ls",
         "html",
         "cssls",
@@ -37,8 +36,6 @@ return {
       { "j-hui/fidget.nvim", opts = {} }, -- LSP status UI
     },
     config = function()
-      local lspconfig = require("lspconfig")
-
       -- Diagnostic config
       vim.diagnostic.config({
         virtual_text = {
@@ -56,32 +53,35 @@ return {
       })
 
       -- LSP keymaps (set when LSP attaches)
-      local on_attach = function(client, bufnr)
-        local map = function(mode, lhs, rhs, desc)
-          vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
-        end
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
+        callback = function(event)
+          local map = function(mode, lhs, rhs, desc)
+            vim.keymap.set(mode, lhs, rhs, { buffer = event.buf, desc = desc })
+          end
 
-        -- Go to
-        map("n", "gd", vim.lsp.buf.definition, "Go to definition")
-        map("n", "gr", vim.lsp.buf.references, "Go to references")
-        map("n", "gI", vim.lsp.buf.implementation, "Go to implementation")
-        map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
-        map("n", "gy", vim.lsp.buf.type_definition, "Go to type definition")
+          -- Go to
+          map("n", "gd", vim.lsp.buf.definition, "Go to definition")
+          map("n", "gr", vim.lsp.buf.references, "Go to references")
+          map("n", "gI", vim.lsp.buf.implementation, "Go to implementation")
+          map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
+          map("n", "gy", vim.lsp.buf.type_definition, "Go to type definition")
 
-        -- Info
-        map("n", "K", vim.lsp.buf.hover, "Hover documentation")
-        map("n", "<C-k>", vim.lsp.buf.signature_help, "Signature help")
+          -- Info
+          map("n", "K", vim.lsp.buf.hover, "Hover documentation")
+          map("n", "<C-k>", vim.lsp.buf.signature_help, "Signature help")
 
-        -- Code actions
-        map("n", "<leader>ca", vim.lsp.buf.code_action, "Code action")
-        map("n", "<leader>cr", vim.lsp.buf.rename, "Rename symbol")
-        map("n", "<leader>cf", vim.lsp.buf.format, "Format buffer")
+          -- Code actions
+          map("n", "<leader>ca", vim.lsp.buf.code_action, "Code action")
+          map("n", "<leader>cr", vim.lsp.buf.rename, "Rename symbol")
+          map("n", "<leader>cf", vim.lsp.buf.format, "Format buffer")
 
-        -- Diagnostics
-        map("n", "<leader>cd", vim.diagnostic.open_float, "Line diagnostics")
-        map("n", "[d", vim.diagnostic.goto_prev, "Previous diagnostic")
-        map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
-      end
+          -- Diagnostics
+          map("n", "<leader>cd", vim.diagnostic.open_float, "Line diagnostics")
+          map("n", "[d", vim.diagnostic.goto_prev, "Previous diagnostic")
+          map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
+        end,
+      })
 
       -- Default capabilities with nvim-cmp
       local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -90,33 +90,37 @@ return {
         capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
       end
 
-      -- Setup servers
-      local servers = {
-        lua_ls = {
-          settings = {
-            Lua = {
-              workspace = { checkThirdParty = false },
-              telemetry = { enable = false },
-              diagnostics = {
-                globals = { "vim" },
-              },
+      -- Server configurations using new vim.lsp.config API
+      vim.lsp.config("lua_ls", {
+        capabilities = capabilities,
+        settings = {
+          Lua = {
+            workspace = { checkThirdParty = false },
+            telemetry = { enable = false },
+            diagnostics = {
+              globals = { "vim" },
             },
           },
         },
-        ruby_lsp = {},
-        ts_ls = {},
-        html = {},
-        cssls = {},
-        jsonls = {},
-        yamlls = {},
-        bashls = {},
-      }
+      })
 
-      for server, opts in pairs(servers) do
-        opts.on_attach = on_attach
-        opts.capabilities = capabilities
-        lspconfig[server].setup(opts)
-      end
+      vim.lsp.config("ts_ls", { capabilities = capabilities })
+      vim.lsp.config("html", { capabilities = capabilities })
+      vim.lsp.config("cssls", { capabilities = capabilities })
+      vim.lsp.config("jsonls", { capabilities = capabilities })
+      vim.lsp.config("yamlls", { capabilities = capabilities })
+      vim.lsp.config("bashls", { capabilities = capabilities })
+
+      -- Enable all configured servers
+      vim.lsp.enable({
+        "lua_ls",
+        "ts_ls",
+        "html",
+        "cssls",
+        "jsonls",
+        "yamlls",
+        "bashls",
+      })
     end,
   },
 
