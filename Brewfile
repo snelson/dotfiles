@@ -11,8 +11,6 @@ brew "fd"                    # Fast find
 brew "fzf"                   # Fuzzy finder
 
 # Development
-brew "chruby"                # Ruby version manager
-brew "ruby-install"          # Install rubies for chruby
 brew "node"
 brew "postgresql@16"
 

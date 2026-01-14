@@ -79,16 +79,6 @@ export PATH="/usr/local/bin:$PATH"
 # git authors for pairing
 [[ -s "$HOME/.git_authors" ]] && source "$HOME/.git_authors"
 
-# Setup for chruby (if installed via homebrew)
-if [[ -f /opt/homebrew/share/chruby/chruby.sh ]]; then
-  source /opt/homebrew/share/chruby/chruby.sh
-  source /opt/homebrew/share/chruby/auto.sh
-elif [[ -f /usr/local/share/chruby/chruby.sh ]]; then
-  source /usr/local/share/chruby/chruby.sh
-  source /usr/local/share/chruby/auto.sh
-fi
-# Note: Ruby version is auto-selected via .ruby-version in project directories
-
 # Zoxide (smarter cd)
 eval "$(zoxide init zsh)"
 
