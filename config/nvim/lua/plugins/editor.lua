@@ -48,10 +48,15 @@ return {
     },
   },
 
-  -- Highlight trailing whitespace
+  -- Highlight and strip trailing whitespace
   {
     "ntpeters/vim-better-whitespace",
     event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      vim.g.better_whitespace_enabled = 1
+      vim.g.strip_whitespace_on_save = 1
+      vim.g.strip_whitespace_confirm = 0
+    end,
   },
 
   -- Which-key for keybinding help

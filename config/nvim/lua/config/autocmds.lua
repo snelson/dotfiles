@@ -63,14 +63,3 @@ autocmd("FileType", {
     vim.opt_local.spell = true
   end,
 })
-
--- Strip trailing whitespace on save
-augroup("TrimWhitespace", { clear = true })
-autocmd("BufWritePre", {
-  group = "TrimWhitespace",
-  callback = function()
-    local save_cursor = vim.fn.getpos(".")
-    vim.cmd([[%s/\s\+$//e]])
-    vim.fn.setpos(".", save_cursor)
-  end,
-})
