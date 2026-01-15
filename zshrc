@@ -59,15 +59,6 @@ setopt nocorrectall
 # Enable extended globbing
 setopt EXTENDED_GLOB
 
-# restore previous cwd
-if [[ -f ~/.last_cwd ]]; then
-  cd "$(cat ~/.last_cwd)" 2>/dev/null || true
-fi
-_save_last_cwd() {
-  printf '%s' "$PWD" > ~/.last_cwd
-}
-chpwd_functions=( "${chpwd_functions[@]}" _save_last_cwd )
-
 # tmuxinator
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
