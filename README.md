@@ -1,4 +1,4 @@
-# This by Them's Dotfiles
+# Scotty's Dotfiles
 
 ## Installation
 
