@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git branch:*)",
+      "Bash(git show:*)",
+      "Bash(bin/rails test *)",
+      "Bash(bin/rails test:system)",
+      "Bash(bin/ci)",
+      "Bash(bin/rubocop *)",
+      "Bash(bin/brakeman *)",
+      "Bash(bundle exec *)",
+      "Bash(rake *)",
+      "Bash(npm run *)",
+      "Bash(yarn *)",
+      "Bash(ls:*)",
+      "Bash(which *)"
+    ]
+  }
+}

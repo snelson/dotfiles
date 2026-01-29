@@ -2,7 +2,7 @@ require 'rake'
 require 'erb'
 require 'fileutils'
 
-EXCLUDE_FILES = %w[Rakefile README.md LICENSE Brewfile config].freeze
+EXCLUDE_FILES = %w[Rakefile README.md LICENSE Brewfile config claude].freeze
 
 desc "Install the dot files into user's home directory"
 task :install do
@@ -40,6 +40,9 @@ task :install do
 
   # Handle config directory (for ~/.config)
   setup_config_dir
+
+  # Handle claude directory (for ~/.claude)
+  setup_claude_dir
 end
 
 desc "Install Homebrew dependencies from Brewfile"
@@ -85,6 +88,41 @@ def setup_config_dir
 
     source = File.join(config_source, entry)
     target = File.join(config_home, entry)
+
+    if File.exist?(target) || File.symlink?(target)
+      if File.symlink?(target) && File.readlink(target) == source
+        puts "identical #{target}"
+      else
+        print "overwrite #{target}? [yn] "
+        case $stdin.gets.chomp
+        when 'y'
+          FileUtils.rm_rf(target)
+          puts "linking #{target}"
+          File.symlink(source, target)
+        else
+          puts "skipping #{target}"
+        end
+      end
+    else
+      puts "linking #{target}"
+      File.symlink(source, target)
+    end
+  end
+end
+
+def setup_claude_dir
+  claude_source = File.join(Dir.pwd, 'claude')
+  return unless File.directory?(claude_source)
+
+  claude_home = File.join(ENV['HOME'], '.claude')
+  FileUtils.mkdir_p(claude_home)
+
+  # Handle each entry in claude/ (both files and directories)
+  Dir.entries(claude_source).each do |entry|
+    next if entry.start_with?('.')
+
+    source = File.join(claude_source, entry)
+    target = File.join(claude_home, entry)
 
     if File.exist?(target) || File.symlink?(target)
       if File.symlink?(target) && File.readlink(target) == source
