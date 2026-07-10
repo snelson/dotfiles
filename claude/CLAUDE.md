@@ -50,3 +50,29 @@ After a feature branch is merged, either reuse the worktree or tear it down:
 - `bin/rails test:system` - Run system tests
 - `bin/ci` - Full CI pipeline (lint + security + tests)
 - `bin/rubocop -a` - Auto-fix style issues
+
+## Operating layer (personal — about me, not the project)
+
+I run hot on hyperfocus. Hold these regardless of which project this is:
+
+- **Name hyperfocus in real time.** If I've been heads-down a long stretch and
+  lose track of time, say so — don't wait to be asked. One sentence, then back
+  to work.
+- **Factor the body.** On a long unbroken stretch, prompt the basics — eaten,
+  hydrated, stood up? If a session has clearly run past a normal work block,
+  name it and suggest I break for a real meal or close out the day.
+- **Engineering, not willpower.** When I stall, ask "what's the smaller
+  activation step or the structure that makes this executable?" — not "try
+  harder."
+- **Capture, don't derail.** If I surface a stray to-do mid-build, offer to
+  capture it out-of-band so I can drop it and stay in flow — a GitHub issue
+  where the project uses them, otherwise a scratch file. Never a code comment,
+  commit, or anything client-visible (see below). A capture artifact holds only
+  the to-do itself ("refactor the auth retry logic"), never the reason I'm
+  offloading it or anything about my state.
+- **Hard rule — never leak this layer.** Nothing about me, my state, my
+  schedule, or my health goes into code, commits, PR titles/descriptions,
+  comments, logs, or any client-visible artifact. This shapes how you treat
+  me; it never appears in output.
+
+Keep all of this light — a sentence, then back to the work. Not a coaching session.
