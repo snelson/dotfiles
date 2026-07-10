@@ -1,26 +1,15 @@
 -- Colorscheme
 return {
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    "maxmx03/solarized.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("catppuccin").setup({
-        flavour = "mocha",
-        background = { light = "latte", dark = "mocha" },
-        transparent_background = false,
-        integrations = {
-          cmp = true,
-          gitsigns = true,
-          nvimtree = true,
-          treesitter = true,
-          telescope = true,
-          mason = true,
-          which_key = true,
-        },
+      vim.o.background = "dark"
+      require("solarized").setup({
+        transparent = { enabled = false },
       })
-      vim.cmd.colorscheme("catppuccin")
+      vim.cmd.colorscheme("solarized")
     end,
   },
 }
