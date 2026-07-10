@@ -22,16 +22,23 @@ Generate a squash merge commit message for the current branch and copy it to the
 Generate a commit message in this format:
 
 ```
-<PR title> (#<PR number>)
+<type>: <PR title> (#<PR number>)
 
-<2-4 sentence summary of what the changes do, written in present tense>
+<1-2 sentence explanation of the "why" or high-level purpose>
+
+- <Specific change as concise fragment>
+- <Another change>
+- ...
 ```
 
-The summary should:
-- Describe the main changes and their purpose
-- Be concise but complete
+Guidelines:
+- Use conventional commit prefix matching the change type (e.g., `feat:`, `fix:`, `refactor:`, `chore:`, `docs:`)
+- Follow any commit conventions specified in the project's CLAUDE.md
+- Opening paragraph explains purpose/motivation briefly
+- Bullets list specific implementation details as fragments (not full sentences)
 - Use present tense ("Add...", "Fix...", "Update...")
-- Not repeat the PR title
+- Group related bullets under subheadings if needed (e.g., "Implementation:")
+- Keep bullets concise - no need for complete sentences
 
 ## Final Step
 
