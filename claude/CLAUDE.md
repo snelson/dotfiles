@@ -34,14 +34,15 @@
 - Include Co-Authored-By footer when working with Claude
 
 ### Worktrees
-When working in a git worktree (branch name matches the directory name, e.g., `wazi-work1`):
-- Always create a feature branch before starting implementation
+When the working directory is a git worktree (detect by running `git rev-parse --git-common-dir` — if it differs from `git rev-parse --git-dir`, you're in a worktree):
+- If the current branch is `main` or any non-feature branch, create a descriptive feature branch before making the first edit
+- When planning, include "create feature branch `<name>`" as the first step of the plan so branch creation is approved alongside the plan
 - Make logical commits as you progress
 - Commit completed work without waiting to be asked
 
-After a feature branch is merged:
-1. Reset to main: `git fetch origin main && git checkout -B <branch> origin/main`
-2. Delete the merged feature branch: `git branch -D <feature-branch>`
+After a feature branch is merged, either reuse the worktree or tear it down:
+- **Reuse** (keep the worktree, start the next branch fresh): `git fetch origin main && git checkout -B <branch> origin/main`, then delete the old merged branch with `git branch -D <old-feature-branch>`.
+- **Tear down** (done with the worktree): if the project ships a `bin/worktree-remove` (e.g. restored_minds), run `bin/worktree-remove <name> --force` from another checkout — it drops the worktree's per-worktree dev/test DBs, removes the worktree, and deletes the merged branch in one step (a plain `git worktree remove` leaves the per-worktree DBs orphaned). Without that helper: `git worktree remove <path>` then `git branch -D <feature-branch>`.
 
 ## Common Commands
 - `bin/dev` - Start development server
