@@ -119,7 +119,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       options = {
-        theme = "catppuccin",
+        theme = "solarized_dark",
         globalstatus = true,
       },
       sections = {
